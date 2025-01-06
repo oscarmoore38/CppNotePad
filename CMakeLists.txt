@@ -12,14 +12,16 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 add_subdirectory(googletest)
 
-# Automatically gather all source files in src directory
+# Automatically gather all source and header files
 file(GLOB Sources
-    src/*.cpp  # This will include all .cpp files in the src directory
+    src/*.cpp  
+    src/notepadClass/*.cpp
 )
 
 # Header files
 file(GLOB Headers
-    src/*.h
+    src/*.hpp
+    src/notepadClass/*.hpp
 )
 
 # Create static library for testing
