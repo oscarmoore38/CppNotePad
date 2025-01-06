@@ -1,9 +1,15 @@
+#include "notepadClass/notepad.hpp"
 #include <iostream>
 
-using namespace ::std;
+using namespace std;
 
 
-int main() {
-    cout << "Hello, GitHub Codespaces! I'm learning how to build C++ projects! ChatGPT is like a drunk uncle" << endl;
+int main(int argc, char* argv[]) {
+    // Create NotePad Object 
+    NotePad newNotepad; 
+
+    newNotepad.run(argc, argv); 
+
     return 0;
+
 }
