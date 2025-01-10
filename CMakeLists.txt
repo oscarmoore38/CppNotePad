@@ -28,10 +28,10 @@ file(GLOB Headers
 add_library(${This} STATIC ${Sources} ${Headers})
 
 # Create an executable for main program 
-add_executable(CppNotePadExecutable ${Sources}) 
+add_executable(CppNPExec ${Sources}) 
 
 # Link your executable to the static library 
-target_link_libraries(CppNotePadExecutable PRIVATE ${This})
+target_link_libraries(CppNPExec PRIVATE ${This})
 
 # Integration Tests
 enable_testing()

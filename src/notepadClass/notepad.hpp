@@ -4,6 +4,9 @@
 #include <string>
 #include <vector> 
 
+
+using namespace std; 
+
 /**
  * @class NotePad
  * @brief Class orchestrator for notepad program
@@ -25,6 +28,7 @@ private:
     // EditFile editUserInput; 
     // LoadFile loadUserInput; 
     // FileGUI fileGUI; 
+    string UserInput;
 
 public: 
     /** 
@@ -40,6 +44,13 @@ public:
      * @return Void
      */ 
     void run(int argumentCount, char* argumentValue[]);
+
+    /** 
+     * @brief Prints CLI prompt for user
+     * @note No params
+     * @return bool 
+     */ 
+    bool getUserMenuOption();
 
 
 
