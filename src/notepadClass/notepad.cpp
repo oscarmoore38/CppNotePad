@@ -11,17 +11,24 @@ NotePad:: NotePad(){}
 
 void NotePad:: run(int argumentCount, char* arguementValue[]){
 
-    // Give user options. 
-
-    // Do some action based on those options
-    // 1) open a file 
-    // 2) create new file 
-    // 3) save file 
-    // 4) Edit existing file. 
     bool validInput = false; 
     
     while (!validInput){
         validInput = getUserMenuOption();
+    }
+
+    if (UserInput == "1"){
+        // Check valid file
+        cout << "What file would you like to open?" << endl; 
+
+        fileOperations.showFiles(dirPathForUserFiles);
+
+        getline(cin, UserFile); 
+
+        string fullPath = dirPathForUserFiles + UserFile;
+
+        fileOperations.readFile(fullPath);
+        
     }
 
 
@@ -29,6 +36,7 @@ void NotePad:: run(int argumentCount, char* arguementValue[]){
 };
 
 bool NotePad:: getUserMenuOption(){
+    cout << "***"  << endl; 
     cout << "Welcome to CPPNotePad. Please select an option" << endl;
     cout << "****" << endl;
     cout << "1 - Open file" << endl;
@@ -39,7 +47,7 @@ bool NotePad:: getUserMenuOption(){
     getline(cin, UserInput);
 
     if (UserInput != "1" &&  UserInput != "2" && UserInput != "3"){
-        cout << "Invalid choice, please choose again" << endl;
+        cout << "Invalid choice, please choose option 1, 2, or 3" << endl;
         return false;
     }
 

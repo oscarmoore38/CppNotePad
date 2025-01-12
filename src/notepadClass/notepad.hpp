@@ -3,6 +3,8 @@
 
 #include <string>
 #include <vector> 
+#include "../fileOperationsClass/fileOperations.hpp"
+
 
 
 using namespace std; 
@@ -21,14 +23,13 @@ private:
     // EditFile 
     // LoadFile
     // FileGUI (stretch)
+    string dirPathForUserFiles = "/workspaces/CppNotePad/Files/";
 
     // Attributes 
-    // ReadUserInput readUserInput; 
-    // SaveUserInput saveUserInput; 
-    // EditFile editUserInput; 
-    // LoadFile loadUserInput; 
+    FileOperations fileOperations;
     // FileGUI fileGUI; 
     string UserInput;
+    string UserFile; 
 
 public: 
     /** 
