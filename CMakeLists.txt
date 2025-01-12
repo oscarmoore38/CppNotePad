@@ -5,7 +5,7 @@ set(This CppNotePad)
 project(${This} C CXX)
 
 # GoogleTest requires at least C++14
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -16,12 +16,14 @@ add_subdirectory(googletest)
 file(GLOB Sources
     src/*.cpp  
     src/notepadClass/*.cpp
+    src/fileOperationsClass/*.cpp
 )
 
 # Header files
 file(GLOB Headers
     src/*.hpp
     src/notepadClass/*.hpp
+    src/fileOperationsClass/*.hpp
 )
 
 # Create static library for testing
