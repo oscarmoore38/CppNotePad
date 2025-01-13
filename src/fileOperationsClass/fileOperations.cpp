@@ -43,7 +43,14 @@ bool FileOperations:: readFile(const string& userFile){
 
 void FileOperations:: showFiles(const string& dirPath){
     cout << "Current saved files:" << endl;
-    for (const auto & entry : directory_iterator(dirPath))
-        cout << entry.path() << endl;
+    string pathToFile;
+    string fileNameOnly;
+    for (const auto & entry : directory_iterator(dirPath)){
+        // Print just file not abs path. 
+        pathToFile = entry.path();
+        size_t pos = pathToFile.rfind("/");
+        fileNameOnly = pathToFile.substr(pos+1);
+        cout << "-- " << fileNameOnly << endl;
+    }
 
 }
