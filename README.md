@@ -37,8 +37,8 @@ For the best development experience with IntelliSense and seamless CMake integra
 **Clone the Repository:**
 Navigate to the directory where you want to store the project and clone the CppNotePad repository:
 
-`git clone https://github.com/oscarmoore38/CppNotePad.git`
-`cd CppNotePad`
+- `git clone https://github.com/oscarmoore38/CppNotePad.git`
+- `cd CppNotePad`
 
 **Clone GoogleTest:**
 Google Test is used for the project's unit and integration tests. Clone the GoogleTest repository directly into your project's root directory:
@@ -58,17 +58,17 @@ After successfully building the project, your executable (CppNPExec on Linux/mac
 
 To run the application:
 
-`./bin/CppNPExec`
+- `./bin/CppNPExec`
 
 Or on Windows
 
-`.\bin\CppNPExec.exe` 
+- `.\bin\CppNPExec.exe` 
 
 **Running Tests**
 The project includes unit and integration tests using Google Test. After building with CMake, you can run all tests using ctest from your build directory:
 
-`cd build`
-`ctest` Use --verbose to see detailed test output
+- `cd build`
+- `ctest` Use --verbose to see detailed test output
 
 You can also run tests directly from the VS Code Test Explorer sidebar after the CMake Tools extension has configured the project.
 
