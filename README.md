@@ -1,1 +1,73 @@
 # CppNotePad
+
+A basic C++ command-line application that mimics notepad functionalities, allowing users to write, edit, save, and delete text files.
+
+Features
+- Create New Files: Start fresh with a blank canvas.
+
+- Edit Existing Files: Open and modify your text files.
+
+- Save Files: Persist your changes to disk.
+
+- Delete Files: Remove unwanted files.
+
+Setup & Building
+To get CppNotePad up and running on your local machine, follow these steps:
+
+Prerequisites
+
+Make sure you have the following installed:
+
+- CMake: A cross-platform build system.
+
+- C++ Compiler: (e.g., GCC, Clang, MSVC)
+
+- Git: For cloning repositories.
+
+Recommended VS Code Extensions (if using VS Code)
+
+For the best development experience with IntelliSense and seamless CMake integration, install these extensions in VS Code:
+
+- CMake Tools
+
+- C/C++ extension
+
+Installation Steps
+
+Clone the Repository:
+Navigate to the directory where you want to store the project and clone the CppNotePad repository:
+
+git clone https://github.com/oscarmoore38/CppNotePad.git
+cd CppNotePad
+
+Clone GoogleTest:
+Google Test is used for the project's unit and integration tests. Clone the GoogleTest repository directly into your project's root directory:
+
+git clone https://github.com/google/googletest.git
+
+Build with CMake:
+Create a build directory, navigate into it, and use CMake to configure and build your project. This will generate the necessary build files and compile the source code.
+
+mkdir build
+cd build
+cmake ..           # Configures the project and generates build files
+cmake --build .    # Compiles the project
+
+Usage
+After successfully building the project, your executable (CppNPExec on Linux/macOS or CppNPExec.exe on Windows) will be located in the build/bin directory.
+
+To run the application:
+
+./bin/CppNPExec
+
+(Or .\bin\CppNPExec.exe on Windows)
+
+Running Tests
+The project includes unit and integration tests using Google Test. After building with CMake, you can run all tests using ctest from your build directory:
+
+cd build
+ctest --verbose # Use --verbose to see detailed test output
+
+You can also run tests directly from the VS Code Test Explorer sidebar after the CMake Tools extension has configured the project.
+
+
