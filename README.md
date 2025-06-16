@@ -39,6 +39,7 @@ Navigate to the directory where you want to store the project and clone the CppN
 
 - `git clone https://github.com/oscarmoore38/CppNotePad.git`
 - `cd CppNotePad`
+- `mkdir files` # creates directory for files from program
 
 **Clone GoogleTest:**
 Google Test is used for the project's unit and integration tests. Clone the GoogleTest repository directly into your project's root directory:
