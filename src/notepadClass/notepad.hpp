@@ -47,11 +47,34 @@ public:
     void run(int argumentCount, char* argumentValue[]);
 
     /** 
-     * @brief Prints CLI prompt for user
+     * @brief Prints CLI prompt for user to collect choice. Will return true if valid choice, false otherwise. 
      * @note No params
      * @return bool 
      */ 
-    bool getUserMenuOption();
+    bool UserMenuOption();
+
+
+     /** 
+     * @brief Opens file at target directory  
+     * @note No params
+     * @return bool 
+     */ 
+    bool OpenFiles();
+
+
+    /** 
+     * @brief Edits file at target directory  
+     * @param filePath The path to the file to edit. 
+     * @return bool 
+     */ 
+    bool EditFile(const string& filePath);
+
+    /** 
+     * @brief Creates new file at target directory 
+     * @note No params
+     * @return bool 
+     */ 
+    bool CreateNewFile();
 
 
 
