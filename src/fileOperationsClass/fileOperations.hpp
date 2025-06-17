@@ -39,6 +39,15 @@ class FileOperations{
          * @return Void  
          */ 
         void showFiles(const string& dirPath);
+
+         /** 
+         * @brief Counts files in a directory and returns count. 
+         * @param dirPath The path to the directory that holds userFiles 
+         * @return int   
+         */ 
+        int getFileCountInDir(const string& dirPath);
+
+
 };
 
 

@@ -54,3 +54,12 @@ void FileOperations:: showFiles(const string& dirPath){
     }
 
 }
+
+int FileOperations:: getFileCountInDir(const string& dirPath){
+    int count; 
+    for (const auto & entry: directory_iterator(dirPath)){
+        count ++; 
+    }
+
+    return count; 
+}
