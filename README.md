@@ -1,9 +1,9 @@
 # CppNotePad
 
-A basic C++ command-line application that mimics notepad functionalities, allowing users to write, edit, save, and delete text files.
+This is a fun personal project I did to gain experience with file handling in C++. It is essentially a basic C++ command-line application that mimics standard notepad functionalities, allowing users to write, edit, save, and delete text files. If you only wish to run the program, you can follow the installation steps, omitting the Google Test setup. However, if you plan to extend or modify the program, then installing Google Test as per the instructions will be necessary for testing setup.
 
 **Features**
-- Create New Files: Start fresh with a blank canvas.
+- Create New Files: creates a new blank text file.
 
 - Edit Existing Files: Open and modify your text files.
 
@@ -39,7 +39,8 @@ Navigate to the directory where you want to store the project and clone the CppN
 
 - `git clone https://github.com/oscarmoore38/CppNotePad.git`
 - `cd CppNotePad`
-- `mkdir files` # creates directory for files from program
+
+Please ensure the CMakeLists.txt file remains in the project root. The program uses this file to identify the root directory and create the Files directory for storing program files upon its first run.
 
 **Clone GoogleTest:**
 Google Test is used for the project's unit and integration tests. Clone the GoogleTest repository directly into your project's root directory:
