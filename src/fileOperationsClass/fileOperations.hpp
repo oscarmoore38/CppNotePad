@@ -4,8 +4,10 @@
 #include <string>
 #include <vector> 
 #include <fstream>
+#include <filesystem>
 
 using namespace std; 
+using namespace std::filesystem;
 
 /**
  * @class FileOperations
@@ -17,12 +19,14 @@ class FileOperations{
 
     private: 
         ifstream InputFile;
+        filesystem:: path targetDirectory; 
+        bool FileDirCreated; 
 
 
     public: 
         /** 
          * @brief Constructor for NotePad class 
-         * @note Takes no params 
+         * @param DirName Desired name for directory to store program files. 
          */ 
         FileOperations();
 
@@ -47,6 +51,22 @@ class FileOperations{
          */ 
         int getFileCountInDir(const string& dirPath);
 
+
+         /** 
+         * @brief Creates a new file  
+         * @param fileName name of new file to create.  
+         * @return bool   
+         */ 
+        bool createNewFile (const string& fileName);
+
+
+
+        /** 
+         * @brief Recursively finds the root directory by searching for the marker file "CMakeLists.txt" in root. 
+         * @param curWorkingDir current working directory. 
+         * @return bool value if able to locate root. 
+         */ 
+        bool findRootPath (path& curWorkingDir);
 
 };
 

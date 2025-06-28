@@ -6,7 +6,9 @@
 using namespace std;
 
 // Constructor definiton 
-NotePad:: NotePad(){}
+NotePad:: NotePad(){
+    
+}
 
 
 void NotePad:: run(int argumentCount, char* arguementValue[]){  
@@ -32,6 +34,7 @@ bool NotePad:: UserMenuOption(){
     cout << "Press 2 - Create new file" << endl;
     cout << "Press 3 - Edit exisiting file" << endl;
     cout << "****" << endl;
+    cout << ">"; 
     
     getline(cin, UserInput);
 
@@ -54,7 +57,6 @@ bool NotePad:: UserMenuOption(){
 }
 
 bool NotePad:: OpenFiles(){
-
      // Check valid directory 
     try {
         fileOperations.showFiles(dirPathForUserFiles);
@@ -72,7 +74,6 @@ bool NotePad:: OpenFiles(){
         return false; 
     }
     
-
     cout << "What file would you like to open?" << endl; 
 
     getline(cin, UserFile); 
@@ -82,10 +83,20 @@ bool NotePad:: OpenFiles(){
     fileOperations.readFile(fullPath);
 
     return true; 
-
 }
 
 bool  NotePad:: CreateNewFile(){
+    cout << "New file name: " << endl; 
+    string newFileName; 
+    getline(cin, newFileName);
+
+    cout << "Creating new file: " << newFileName << endl; 
+
+    if(!fileOperations.createNewFile(dirPathForUserFiles + newFileName)){
+        return false; 
+    }
+
+    return true; 
 
 }
 
