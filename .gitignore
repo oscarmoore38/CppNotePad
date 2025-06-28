@@ -1,3 +1,5 @@
 googletest/
 
 build/
+
+.vscode/settings.json
