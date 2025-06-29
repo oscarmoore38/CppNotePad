@@ -83,13 +83,12 @@ int FileOperations:: getFileCountInDir(const string& dirPath){
     return count; 
 }
 
-bool FileOperations:: createNewFile(const string& fileName){
+bool FileOperations:: writeFile(const string& fileName){
     ofstream outFile; 
     string userInput; 
     outFile.open(fileName);
 
     if (outFile.is_open()){
-        cout << "\nFile '" << fileName << "' created successfully." << endl; 
         cout << "Enter lines of text to write to " <<fileName << endl; 
         cout << "Type 'quit' or 'q' on a newline when done" <<endl; 
         cout << "--------------------------------------------------" << endl; 
@@ -117,7 +116,6 @@ bool FileOperations:: createNewFile(const string& fileName){
     return true; 
 
 }
-
 
 bool FileOperations:: findRootPath(path& curWorkingDir){
     filesystem:: path pathToTargetFile = curWorkingDir / "CMakeLists.txt"; 

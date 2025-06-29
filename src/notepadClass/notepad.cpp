@@ -2,8 +2,10 @@
 #include <iostream>
 #include <string> 
 #include <vector>
+#include <filesystem>
 
 using namespace std;
+using namespace std::filesystem;
 
 // Constructor definiton 
 NotePad:: NotePad(){
@@ -50,7 +52,7 @@ bool NotePad:: UserMenuOption(){
         CreateNewFile(); 
     }
     else {
-        EditFile(UserFile); // Come back and change this later. Just placeholder for now. 
+        EditFile(); // Come back and change this later. Just placeholder for now. 
     }
 
     return true;
@@ -92,7 +94,7 @@ bool  NotePad:: CreateNewFile(){
 
     cout << "Creating new file: " << newFileName << endl; 
 
-    if(!fileOperations.createNewFile(dirPathForUserFiles + newFileName)){
+    if(!fileOperations.writeFile(dirPathForUserFiles + newFileName)){
         return false; 
     }
 
@@ -100,8 +102,47 @@ bool  NotePad:: CreateNewFile(){
 
 }
 
-bool  NotePad:: EditFile(const string& filename ){
-    
+bool  NotePad:: EditFile(){
+
+    // Check files directory is created 
+    try {
+        fileOperations.showFiles(dirPathForUserFiles);
+    } catch(exception& e){
+        cerr << "No such directory exists. Please check file path " << endl;
+        return false; 
+    }
+
+    // Check if any files exist to edit.  
+    int count = fileOperations.getFileCountInDir(dirPathForUserFiles);
+
+    if (count == 0){
+        cout << "You have no files in your directory to edit. Please create a file" << endl; 
+        CreateNewFile();
+        return false; 
+    }
+
+    // Check specified file exists: 
+    cout << "What file would you like to edit?" << endl; 
+    getline(cin, UserFile); 
+    string fullPath = dirPathForUserFiles + UserFile;
+
+    while (!filesystem::exists(fullPath)){
+        cout << "File: " + fullPath + " not found" << endl; 
+
+        fileOperations.showFiles(dirPathForUserFiles);
+        
+        cout << "What file would you like to edit?" << endl; 
+
+        getline(cin, UserFile); 
+
+        fullPath = dirPathForUserFiles + UserFile;
+
+    }
+
+    fileOperations.writeFile(fullPath);
+
+    return true; 
+
 }
 
 

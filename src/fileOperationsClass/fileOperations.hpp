@@ -51,15 +51,12 @@ class FileOperations{
          */ 
         int getFileCountInDir(const string& dirPath);
 
-
          /** 
          * @brief Creates a new file  
          * @param fileName name of new file to create.  
          * @return bool   
          */ 
-        bool createNewFile (const string& fileName);
-
-
+        bool writeFile (const string& fileName);
 
         /** 
          * @brief Recursively finds the root directory by searching for the marker file "CMakeLists.txt" in root. 

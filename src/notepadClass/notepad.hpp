@@ -67,7 +67,7 @@ public:
      * @param filePath The path to the file to edit. 
      * @return bool 
      */ 
-    bool EditFile(const string& filePath);
+    bool EditFile();
 
     /** 
      * @brief Creates new file at target directory 
