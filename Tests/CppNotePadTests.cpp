@@ -131,8 +131,6 @@ TEST_F(NotePadTest, ReadFile){
 }
 
 TEST_F(NotePadTest, EditFile){
-    cerr << "DEBUG: TEST_F EditFile started." << endl;
-
     NotePad notePadTestObj;
     string message = "This is a test for my program using Google Test!\n";
     string updatedMessage = "I've updated my program with a new message\n"; // Ensure consistent newlines
@@ -145,12 +143,10 @@ TEST_F(NotePadTest, EditFile){
     istringstream createTestCin(createInput); // Dedicated stream for creation
     cin.rdbuf(createTestCin.rdbuf());
 
-    cerr << "DEBUG: Calling CreateNewFile for initial setup." << endl;
     bool success = notePadTestObj.CreateNewFile();
     string pathToTestFile = dirPathForTestFiles + testFileName;
     ASSERT_TRUE(success) << "Initial file creation failed.";
     ASSERT_TRUE(fs::exists(pathToTestFile)) << "Initial file does not exist after creation.";
-    cerr << "DEBUG: Initial file created." << endl;
 
     // --- Phase 2: Verify initial file content 
     // Clear cout buffer of prompts from file creation
@@ -161,7 +157,6 @@ TEST_F(NotePadTest, EditFile){
     istringstream openOriginalTestCin(openOriginalFileInput); // Dedicated stream for initial open
     cin.rdbuf(openOriginalTestCin.rdbuf());
 
-    cerr << "DEBUG: Calling OpenFiles to verify initial content." << endl;
     bool openSuccess = notePadTestObj.OpenFiles();
     ASSERT_TRUE(openSuccess) << "Initial file opening for verification failed.";
 
@@ -175,7 +170,6 @@ TEST_F(NotePadTest, EditFile){
     string extractedOriginalFileContent = capturedOriginalOpenOutput.substr(markerPosOriginal + marker.length());
 
     EXPECT_EQ(actualFileContent, extractedOriginalFileContent) << "Initial file content verification mismatch.";
-    cerr << "DEBUG: Initial file content verified successfully." << endl;
 
     // --- Phase 3: Edit the file ---
     // Prepare input for EditFile: filename to edit, new content, and quit signal
@@ -190,10 +184,8 @@ TEST_F(NotePadTest, EditFile){
     testCout.str("");
     testCout.clear();
 
-    cerr << "DEBUG: Calling EditFile." << endl;
     bool editSuccess = notePadTestObj.EditFile();
     ASSERT_TRUE(editSuccess) << "EditFile function call failed.";
-    cerr << "DEBUG: EditFile returned." << endl;
 
     // --- Phase 4: Read and verify the EDITED file ---
     // Clear cout buffer of prompts from EditFile 
@@ -204,19 +196,14 @@ TEST_F(NotePadTest, EditFile){
     istringstream openEditedTestCin(openEditedFileInput); // Dedicated stream for reading edited file
     cin.rdbuf(openEditedTestCin.rdbuf());
 
-    cerr << "DEBUG: Calling OpenFiles to read edited content." << endl;
     bool openEditSuccess = notePadTestObj.OpenFiles();
     ASSERT_TRUE(openEditSuccess) << "OpenFiles after edit failed.";
-    cerr << "DEBUG: OpenFiles after edit returned." << endl;
 
     // Get the actual content from the file system AFTER the edit
     string actualEditedFileContent = readFileContentHelper(pathToTestFile);
 
     // Get the output captured by testCout from the *latest* OpenFiles call
     string capturedEditedOpenOutput = testCout.str();
-
-    cerr << "DEBUG: Captured output for edited OpenFiles:\n---\n" << capturedEditedOpenOutput << "---\n";
-    cerr << "DEBUG: Expected edited file content:\n---\n" << updatedMessage << "---\n"; // Compare against the updated message
 
     size_t markerPosEdited = capturedEditedOpenOutput.find(marker);
 
@@ -225,7 +212,4 @@ TEST_F(NotePadTest, EditFile){
 
     // Compare the extracted content with the expected updated message
     EXPECT_EQ(updatedMessage, extractedEditedFileContent) << "Edited file content verification mismatch.";
-    cerr << "DEBUG: Edited file content verified successfully." << endl;
-
-    cerr << "DEBUG: TEST_F EditFile finished." << endl;
 }
